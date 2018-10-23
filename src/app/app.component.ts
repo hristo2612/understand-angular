@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get<IDeveloper[]>('../assets/data.json').subscribe((data) => {
+    this.http.get<IDeveloper[]>('./assets/data.json').subscribe((data) => {
       this.developers = data;
     });
   }
