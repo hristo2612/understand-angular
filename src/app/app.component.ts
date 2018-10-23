@@ -1,47 +1,29 @@
-import { Component } from '@angular/core';
-
-interface IDeveloper {
-  name: string;
-  shortName: string;
-  reKnown: string;
-  bio: string;
-  highlight?: boolean;
-}
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { IDeveloper } from './models/developer.model';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   query: string;
-  developers: IDeveloper[];
+  developers: IDeveloper[] = [];
+  currentDeveloper?: IDeveloper;
 
   public showDeveloper(developer) {
-    this.query = developer.name;
-    developer.highlight = true;
-  }
-  constructor() {
     this.query = '';
-    this.developers = [
-      {
-        name: 'Hristo Bogoev',
-        shortName: 'icko',
-        reKnown: 'Software University from outta space',
-        bio: 'Likes to learn and teach great stuff',
-      },
-      {
-        name: 'Linus Torvalds',
-        shortName: 'linus',
-        reKnown: 'Unknown',
-        bio: 'Writes linux things..',
-      },
-      {
-        name: 'Bai Ganio',
-        shortName: 'bai ganio',
-        reKnown: 'From MIT',
-        bio: 'Goes around and around and around..',
-      }
-    ];
+    this.currentDeveloper = developer;
+  }
+
+  ngOnInit(): void {
+    this.http.get<IDeveloper[]>('../assets/data.json').subscribe((data) => {
+      this.developers = data;
+    });
+  }
+
+  constructor(private http: HttpClient) {
+    this.query = '';
   }
 }
