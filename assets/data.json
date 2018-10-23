@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Hristo Bogoev",
+    "shortName": "icko",
+    "reKnown": "Software University from outta space",
+    "bio": "Likes to learn and teach great stuff"
+  },
+  {
+    "name": "Linus Torvalds",
+    "shortName": "linus",
+    "reKnown": "Unknown",
+    "bio": "Writes linux things.."
+  },
+  {
+    "name": "Bai Ganio",
+    "shortName": "bai ganio",
+    "reKnown": "From MIT",
+    "bio": "Goes around and around and around.."
+  }
+]
